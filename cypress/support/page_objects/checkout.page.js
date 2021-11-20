@@ -35,11 +35,6 @@ class Checkout {
         cy.get('#place_order').click()
     }
 
-    mensagemPedidoRecebido() {
-        cy.wait(4000)
-        cy.get('.woocommerce-notice').contains('Obrigado. Seu pedido foi recebido.')
-    }
-
 }
 
 export default new Checkout

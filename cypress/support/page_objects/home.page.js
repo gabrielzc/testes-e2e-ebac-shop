@@ -5,10 +5,6 @@ class HomePage {
     }
 
     adicionarProduto(produto) {
-        cy.get('[class="product-block grid"]').eq(produto).click()
-    }
-
-    adicionarProdutoPeloNome(produto) {
         cy.get('[class="product-block grid"]').contains(produto).click()
     }
 }

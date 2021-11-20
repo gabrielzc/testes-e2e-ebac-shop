@@ -19,36 +19,33 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
 
     it('Deve fazer um pedido na loja Ebac Shop de ponta a ponta', () => {
         // Primeiro produto
-        HomePage.adicionarProduto(0)
-        DetalhesProdutoPage.selecionarTamanho()
-        DetalhesProdutoPage.selecionarCor()
-        DetalhesProdutoPage.validarEstoque()
+        HomePage.adicionarProduto('Ingrid Running Jacket')
+        DetalhesProdutoPage.selecionarTamanho('M')
+        DetalhesProdutoPage.selecionarCor('Orange')
         DetalhesProdutoPage.adicionarQuantidadeProdutosCompra(1)
         DetalhesProdutoPage.clicarComprarProduto()
         HomePage.clicarLogoEbacShop()
 
         // Segundo produto
-        HomePage.adicionarProduto(1)
-        DetalhesProdutoPage.selecionarTamanho()
-        DetalhesProdutoPage.selecionarCor()
-        DetalhesProdutoPage.validarEstoque()
+        HomePage.adicionarProduto('Augusta Pullover Jacket')
+        DetalhesProdutoPage.selecionarTamanho('L')
+        DetalhesProdutoPage.selecionarCor('Red')
         DetalhesProdutoPage.adicionarQuantidadeProdutosCompra(1)
         DetalhesProdutoPage.clicarComprarProduto()
         HomePage.clicarLogoEbacShop()
 
         // Terceiro produto
-        HomePage.adicionarProduto(2)
-        DetalhesProdutoPage.selecionarTamanho()
-        DetalhesProdutoPage.selecionarCor()
-        DetalhesProdutoPage.validarEstoque()
+        HomePage.adicionarProduto('Josie Yoga Jacket')
+        DetalhesProdutoPage.selecionarTamanho('XL')
+        DetalhesProdutoPage.selecionarCor('Gray')
         DetalhesProdutoPage.adicionarQuantidadeProdutosCompra(1)
         DetalhesProdutoPage.clicarComprarProduto()
         HomePage.clicarLogoEbacShop()
 
         // Quarto produto
-        HomePage.adicionarProdutoPeloNome('Stellar Solar Jacket')
-        DetalhesProdutoPage.selecionarTamanhoComParametro('S')
-        DetalhesProdutoPage.selecionarCorComParamentro('Blue')
+        HomePage.adicionarProduto('Stellar Solar Jacket')
+        DetalhesProdutoPage.selecionarTamanho('S')
+        DetalhesProdutoPage.selecionarCor('Blue')
         DetalhesProdutoPage.adicionarQuantidadeProdutosCompra(1)
         DetalhesProdutoPage.clicarComprarProduto()
         
@@ -58,7 +55,8 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
         Checkout.selecionarPagamento('Cheque')
         Checkout.aceitarTermosCondicoes()
         Checkout.finalizarCompra()
-        Checkout.mensagemPedidoRecebido()
+        cy.wait(4000)
+        cy.get('.woocommerce-notice').contains('Obrigado. Seu pedido foi recebido.')
 });
 
 
